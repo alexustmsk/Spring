@@ -7,9 +7,25 @@
         http://www.springframework.org/schema/context
         http://www.springframework.org/schema/context/spring-context.xsd">
 
-    <bean id="testBean"
-          class="ru.alexustmsk.spring2.TestBean">
-        <constructor-arg value="Sanchos"/>
+    <context:property-placeholder location="classpath:musicPlayer.properties"/>
+
+    <bean id="musicBean"
+          class="ru.alexustmsk.spring2.ClassicalMusic">
+    </bean>
+
+    <bean id="musicBean1"
+          class="ru.alexustmsk.spring2.RockMusic">
+    </bean>
+
+    <bean id="musicBean2"
+          class="ru.alexustmsk.spring2.JazzMusic">
+    </bean>
+
+    <bean id="musicPlayer"
+          class="ru.alexustmsk.spring2.MusicPlayer"
+          scope="prototype">
+        <property name="name" value="${musicPlayer.name}"/>
+        <property name="volume" value="${musicPlayer.valume}"/>
     </bean>
 
 </beans>
